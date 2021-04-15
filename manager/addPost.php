@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="add" placeholder="" value="1">
+                <input type="text" class="form-control" name="add" style="display: none" placeholder="" value="1">
             </div>
         </div>
 

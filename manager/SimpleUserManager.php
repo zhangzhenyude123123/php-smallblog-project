@@ -1,7 +1,8 @@
 <?php
 require_once 'UserManager.class.php';
+require_once 'PdoManager.php';
 
-class SimpleUserManager implements UserManager
+class SimpleUserManager extends PdoManager implements UserManager
 {
     public $email;
     public $password;
@@ -28,12 +29,12 @@ class SimpleUserManager implements UserManager
         $this->connect();
     }
 
-    public function connect(){
-        $this->dbms ='mysql';
-        $this->host='localhost';
-        $this->dbName='test';
-        $this->user='zzy';
-        $this->pass = '224037';
+    function connect(){
+        $this->dbms = self::dbms;
+        $this->host = self::host;
+        $this->dbName = self::dbName;
+        $this->user = self::user;
+        $this->pass = self::pass;
         $this->dsn= "$this->dbms:host=$this->host;dbname=$this->dbName";
         try {
             $this->dsh = new PDO($this->dsn, $this->user, $this->pass);

@@ -1,8 +1,9 @@
 <?php
 require_once 'PostManger.class.php';
+require_once 'PdoManager.php';
 
 //这里需要注意一件事情，
-class SimplePostManager implements PostManager
+class SimplePostManager extends PdoManager implements PostManager
 {
 
     public $count;
@@ -21,12 +22,15 @@ class SimplePostManager implements PostManager
         $this->connect();
     }
 
-    public function connect(){
-        $this->dbms ='mysql';
-        $this->host='localhost';
-        $this->dbName='test';
-        $this->user='zzy';
-        $this->pass = '224037';
+
+
+    function connect(){
+        $this->dbms = self::dbms;
+        $this->host = self::host;
+        $this->dbName = self::dbName;
+        $this->user = self::user;
+        $this->pass = self::pass;
+        $this->dsn= "$this->dbms:host=$this->host;dbname=$this->dbName";
         $this->dsn= "$this->dbms:host=$this->host;dbname=$this->dbName";
         try {
             $this->dsh = new PDO($this->dsn, $this->user, $this->pass);
@@ -52,6 +56,7 @@ class SimplePostManager implements PostManager
 
         echo $res."</table>";
         echo "<form action='addPost.php'><button>add</button></form>";
+        echo "<form action='addComment.php'><button>addcomment</button></form>";
         echo "<form action='removePost.php'><button>remove</button></form>";
     }
 

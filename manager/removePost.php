@@ -28,7 +28,7 @@
 <!--        </div>-->
         <div class="form-group">
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="remove" placeholder="" value="1">
+                <input type="text" class="form-control" name="remove"  style="display: none" placeholder="" value="1">
             </div>
         </div>
 
